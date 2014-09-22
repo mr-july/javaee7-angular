@@ -3,7 +3,7 @@ var app = angular.module('persons', ['ngResource', 'ngGrid', 'ui.bootstrap']);
 // Create a controller with name personsListController to bind to the grid section.
 app.controller('personsListController', function ($scope, $rootScope, personService) {
     // Initialize required information: sorting, the first page to show and the grid options.
-    $scope.sortInfo = {fields: ['id'], directions: ['asc']};
+    $scope.sortInfo = {fields: ['id'], directions: ['asc', 'desc']};
     $scope.persons = {currentPage: 1};
 
     $scope.gridOptions = {
@@ -48,7 +48,7 @@ app.controller('personsListController', function ($scope, $rootScope, personServ
 
     // Watch the sortInfo variable. If changes are detected than we need to refresh the grid.
     // This also works for the first page access, since we assign the initial sorting in the initialize section.
-    $scope.$watch('sortInfo.fields[0]', function () {
+    $scope.$watch('sortInfo', function () {
         $scope.refreshGrid();
     }, true);
 
