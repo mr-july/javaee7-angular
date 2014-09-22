@@ -51,7 +51,6 @@ public class PersonResource extends Application {
     }
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     public PaginatedListWrapper listPersons(@DefaultValue("1")
                                             @QueryParam("page")
                                             Integer page,
